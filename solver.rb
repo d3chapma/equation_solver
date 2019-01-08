@@ -17,13 +17,16 @@ module Solver
   def self.type(token)
     case token
     when /\d+/ then :operand
-    when /[\+]/ then :operator
+    when /[\+\-\/\*]/ then :operator
     end
   end
 
   def self.operate(operator, operand1, operand2)
     case operator
     when '+' then operand1 + operand2
+    when '-' then operand1 - operand2
+    when '*' then operand1 * operand2
+    when '/' then operand1 / operand2
     end
   end
 end
