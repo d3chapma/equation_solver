@@ -13,4 +13,11 @@ describe Solver do
       expect(subject.evaluate(rpn)).to eq(5)
     end
   end
+
+  context '#parse converts infix notation to Reverse Polish Notation such as:' do
+    it '1 + 2' do
+      expression = "1 + 2"
+      expect(Solver.parse(expression)).to eq(['1', '2', '+'])
+    end
+  end
 end

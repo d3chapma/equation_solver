@@ -1,4 +1,26 @@
 module Solver
+  SPLITTER = /(\d+|\+|\-|\*|\/)/
+
+  def self.parse(infix)
+    tokens = infix.split(SPLITTER)
+
+    output = []
+    operators = []
+
+    tokens.each do |token|
+      case type(token)
+      when :operand then output.push(token)
+      when :operator then operators.push(token)
+      end
+    end
+
+    while operators.length > 0
+      output.push(operators.pop)
+    end
+
+    output
+  end
+
   def self.evaluate(rpn)
     output = []
 
